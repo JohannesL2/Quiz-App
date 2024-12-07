@@ -1,0 +1,17 @@
+[
+  {
+    "question": "What is the largest planet in our solar system?",
+    "options": ["jupiter", "mars", "saturnus"],
+    "answer": "jupiter"
+  },
+  {
+    "question": "What is the capital of France?",
+    "options": ["Paris", "London", "Rome"],
+    "answer": "Paris"
+  },
+  {
+    "question": "What is the capital of England?",
+    "options": ["Stockholm", "London", "Rome"],
+    "answer": "London"
+  }
+]
