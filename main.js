@@ -8,6 +8,11 @@ let score = 0;
 let timer;
 let timeLeft = 10; //10 sekunder
 
+let nextQuestionBtn;
+let progressContainer;
+let progressBar;
+let timerElement;
+
 function fetchQuestions() {
   const url = `${apiUrl}`;
 
@@ -49,6 +54,7 @@ function fetchQuestions() {
       nextQuestionBtn.textContent =
         questionIndex === data.length - 1 ? "Submit" : "Next question";
       rootContainer.appendChild(nextQuestionBtn);
+      nextQuestionBtn.disabled = true;
 
       const radioButtons = document.querySelectorAll('input[name="answer"]');
       radioButtons.forEach((radioButton) => {
@@ -67,12 +73,20 @@ function fetchQuestions() {
           }
 
           if (checkedOption.value === correctAnswer) {
+            nextQuestionBtn.disabled = false;
+            progressBar.style.display = "none";
+            timerElement.style.display = "none";
             score++;
             //alert("correct answer");
             checkedOption.parentElement.style.backgroundColor = "green";
+            checkedOption.parentElement.style.borderRadius = "10px";
           } else {
+            nextQuestionBtn.disabled = false;
+            progressBar.style.display = "none";
+            timerElement.style.display = "none";
             //alert("Wrong answer");
             checkedOption.parentElement.style.backgroundColor = "red";
+            checkedOption.parentElement.style.borderRadius = "10px";
           }
         });
       });
@@ -83,21 +97,28 @@ function fetchQuestions() {
       const progressContainer = document.createElement("div");
       const progressBar = document.createElement("div");
 
-      rootContainer.appendChild(timerElement);
       rootContainer.appendChild(progressContainer);
       progressContainer.appendChild(progressBar);
+      progressContainer.appendChild(timerElement);
 
       //progress bar styling
-      progressContainer.style.width = "100%";
+      progressContainer.style.display = "flex";
+      progressContainer.style.alignItems = "center";
+      progressContainer.style.width = "98%";
       progressContainer.style.height = "30px";
-      progressContainer.style.borderRadius = "20px";
-      progressBar.style.borderRadius = "20px";
+      progressContainer.style.borderRadius = "10px";
+      progressBar.style.borderRadius = "10px";
       progressContainer.style.backgroundColor = "#ddd";
-      progressContainer.style.marginTop = "10px";
-      progressBar.style.backgroundColor = "grey";
+      progressContainer.style.marginTop = "20px";
+      progressBar.style.backgroundColor = "#66ff6b";
+      progressBar.style.width = "0%";
+      progressBar.style.height = "100%";
       progressBar.style.margin = "0";
       progressBar.style.padding = "5px";
       progressBar.style.transition = "width 0.5s ease-in-out";
+
+      timerElement.style.fontSize = "24px";
+      timerElement.style.margin = "10px";
 
       timeLeft = 10;
       timerElement.textContent = timeLeft;
@@ -125,7 +146,7 @@ function fetchQuestions() {
       nextQuestionBtn.addEventListener("click", () => {
         if (questionIndex === data.length) {
           showResults();
-          rootContainer.removeChild(timerElement);
+          rootContainer.removeChild(progressContainer);
         } else {
           fetchQuestions();
         }
@@ -133,8 +154,17 @@ function fetchQuestions() {
     });
 
   function showResults() {
+    if (nextQuestionBtn) {
+      nextQuestionBtn.disabled = true;
+    }
+
+    const existingPlayAgainBtn = document.querySelector(".play-again-btn");
+    if (existingPlayAgainBtn) {
+      return;
+    }
+
     const playAgainBtn = document.createElement("button");
-    playAgainBtn.className = "btn btn-light";
+    playAgainBtn.className = "btn btn-dark text-white play-again-btn";
     playAgainBtn.textContent = `You got ${score} answers correct, do you want to try again?`;
     rootContainer.appendChild(playAgainBtn);
 
