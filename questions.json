@@ -23,5 +23,34 @@
     "question": "Who was the first rapper to win an Academy Award?",
     "options": ["Eminem", "Drake", "Jay-Z"],
     "answer": "Eminem"
+  },
+  {
+    "question": "A blacksmith works primarily with what metal?",
+    "options": ["Iron", "Bronze", "Aluminum"],
+    "answer": "Iron"
+  },
+  {
+    "question": "Popular on the web, low-res animations that run a continuous loop are called what?",
+    "options": ["PNG", "GIFS", "Animated-picture"],
+    "answer": "GIFS"
+  },
+  {
+    "question": "In what decade was the internet created?",
+    "options": ["1950s", "1970s", "1960s"],
+    "answer": "1960s"
+  },
+  {
+    "question": "What was the name of the ancient Egyptian sun god?",
+    "options": ["Ra", "Seth", "Anubis"],
+    "answer": "Ra"
+  },
+  {
+    "question": "What event marked the end of the Roman Empire in the West?",
+    "options": [
+      "The Battle of Actium (31 BCE)",
+      "The Sack of Rome by the Visigoths (410 CE)",
+      "The Fall of Rome (476 CE)"
+    ],
+    "answer": "The Fall of Rome (476 CE)"
   }
 ]
