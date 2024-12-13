@@ -1,17 +1,27 @@
 [
   {
     "question": "What is the largest planet in our solar system?",
-    "options": ["jupiter", "mars", "saturnus"],
-    "answer": "jupiter"
+    "options": ["Jupiter", "Mars", "Saturnus"],
+    "answer": "Jupiter"
   },
   {
-    "question": "What is the capital of France?",
-    "options": ["Paris", "London", "Rome"],
-    "answer": "Paris"
+    "question": "Who wrote the screenplay for the movie Rocky?",
+    "options": ["Quentin Tarantino", "Sylvester Stallone", "Chuck Lorre"],
+    "answer": "Sylvester Stallone"
   },
   {
-    "question": "What is the capital of England?",
-    "options": ["Stockholm", "London", "Rome"],
-    "answer": "London"
+    "question": "How many elements are there in the periodic table?",
+    "options": ["50", "91", "118"],
+    "answer": "118"
+  },
+  {
+    "question": "What is the name of the tallest grass on earth?",
+    "options": ["Kentucky bluegrass", "Zoysia grass", "Bamboo"],
+    "answer": "Bamboo"
+  },
+  {
+    "question": "Who was the first rapper to win an Academy Award?",
+    "options": ["Eminem", "Drake", "Jay-Z"],
+    "answer": "Eminem"
   }
 ]

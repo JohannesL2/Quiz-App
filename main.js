@@ -1,4 +1,4 @@
-const apiUrl = "questions.json";
+const apiUrl = "questions.json"; //frågor och svar
 const rootContainer = document.getElementById("root");
 
 let questionIndex = 0;
@@ -16,12 +16,12 @@ let timerElement;
 function fetchQuestions() {
   const url = `${apiUrl}`;
 
-  fetch(url)
+  fetch(url) //fetch från json
     .then((response) => response.json())
     .then((data) => {
       rootContainer.innerHTML = "";
       const titleElement = document.createElement("h1");
-      titleElement.textContent = "Quiz App";
+      titleElement.textContent = "💡Quiz App🧠";
       titleElement.className = "display-3 p-2";
       rootContainer.appendChild(titleElement);
 
@@ -49,10 +49,12 @@ function fetchQuestions() {
       rootContainer.appendChild(optionsElement);
 
       const nextQuestionBtn = document.createElement("button");
-      nextQuestionBtn.className = "btn btn-light";
+      nextQuestionBtn.className = "btn btn-light w-100";
       // Ändrar så knappen ändras till submit när frågorna är slut
       nextQuestionBtn.textContent =
-        questionIndex === data.length - 1 ? "Submit" : "Next question";
+        questionIndex === data.length - 1
+          ? "Submit" + "🏆"
+          : "Next question" + "➡️";
       rootContainer.appendChild(nextQuestionBtn);
       nextQuestionBtn.disabled = true;
 
@@ -75,24 +77,27 @@ function fetchQuestions() {
           if (checkedOption.value === correctAnswer) {
             nextQuestionBtn.disabled = false;
             progressBar.style.display = "none";
+            progressContainer.style.display = "none";
             timerElement.style.display = "none";
             score++;
             //alert("correct answer");
-            checkedOption.parentElement.style.backgroundColor = "green";
+            checkedOption.parentElement.style.backgroundColor = "#8bff85";
             checkedOption.parentElement.style.borderRadius = "10px";
+            checkedOption.parentElement.innerHTML += "✔️";
           } else {
             nextQuestionBtn.disabled = false;
             progressBar.style.display = "none";
+            progressContainer.style.display = "none";
             timerElement.style.display = "none";
             //alert("Wrong answer");
-            checkedOption.parentElement.style.backgroundColor = "red";
+            checkedOption.parentElement.style.backgroundColor = "#ff8785";
             checkedOption.parentElement.style.borderRadius = "10px";
+            checkedOption.parentElement.innerHTML += "❌";
           }
         });
       });
 
-      //timer animation
-
+      //timer och progressbar
       const timerElement = document.createElement("h2");
       const progressContainer = document.createElement("div");
       const progressBar = document.createElement("div");
@@ -101,10 +106,10 @@ function fetchQuestions() {
       progressContainer.appendChild(progressBar);
       progressContainer.appendChild(timerElement);
 
-      //progress bar styling
+      //timer och progressbar styling
       progressContainer.style.display = "flex";
       progressContainer.style.alignItems = "center";
-      progressContainer.style.width = "98%";
+      progressContainer.style.width = "100%";
       progressContainer.style.height = "30px";
       progressContainer.style.borderRadius = "10px";
       progressBar.style.borderRadius = "10px";
@@ -146,6 +151,7 @@ function fetchQuestions() {
       nextQuestionBtn.addEventListener("click", () => {
         if (questionIndex === data.length) {
           showResults();
+          nextQuestionBtn.style.display = "none";
           rootContainer.removeChild(progressContainer);
         } else {
           fetchQuestions();
@@ -154,18 +160,18 @@ function fetchQuestions() {
     });
 
   function showResults() {
-    if (nextQuestionBtn) {
-      nextQuestionBtn.disabled = true;
-    }
-
     const existingPlayAgainBtn = document.querySelector(".play-again-btn");
     if (existingPlayAgainBtn) {
       return;
     }
 
     const playAgainBtn = document.createElement("button");
-    playAgainBtn.className = "btn btn-dark text-white play-again-btn";
+    playAgainBtn.className = "btn btn-success play-again-btn m-2 w-100";
     playAgainBtn.textContent = `You got ${score} answers correct, do you want to try again?`;
+
+    playAgainBtn.style.display = "block";
+    playAgainBtn.style.margin = "0 auto";
+
     rootContainer.appendChild(playAgainBtn);
 
     playAgainBtn.addEventListener("click", () => {
