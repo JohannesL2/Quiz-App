@@ -93,6 +93,15 @@ function fetchQuestions() {
             checkedOption.parentElement.style.backgroundColor = "#ff8785";
             checkedOption.parentElement.style.borderRadius = "10px";
             checkedOption.parentElement.innerHTML += "❌";
+
+            const correctOption = Array.from(radioButtons).find(
+              (radio) => radio.value === correctAnswer
+            );
+            if (correctOption) {
+              correctOption.parentElement.style.backgroundColor = "#8bff85";
+              correctOption.parentElement.style.borderRadius = "10px";
+              correctOption.parentElement.innerHTML += "✔️";
+            }
           }
         });
       });
