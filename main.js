@@ -167,7 +167,7 @@ function fetchQuestions() {
 
     const playAgainBtn = document.createElement("button");
     playAgainBtn.className = "btn btn-success play-again-btn m-2 w-100";
-    playAgainBtn.textContent = `You got ${score} answers correct, do you want to try again?`;
+    playAgainBtn.textContent = `You got ${score} answers correct out of 10, do you want to try again?`;
 
     playAgainBtn.style.display = "block";
     playAgainBtn.style.margin = "0 auto";
