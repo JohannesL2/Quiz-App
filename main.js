@@ -21,7 +21,7 @@ function fetchQuestions() {
     .then((data) => {
       rootContainer.innerHTML = "";
       const titleElement = document.createElement("h1");
-      titleElement.textContent = "💡Quiz App🧠";
+      titleElement.textContent = "💡Quiz App 🧠";
       titleElement.className = "display-3 p-2";
       rootContainer.appendChild(titleElement);
 
@@ -49,12 +49,12 @@ function fetchQuestions() {
       rootContainer.appendChild(optionsElement);
 
       const nextQuestionBtn = document.createElement("button");
-      nextQuestionBtn.className = "btn btn-light w-100";
+      nextQuestionBtn.className = "btn w-100 next-question-btn";
       // Ändrar så knappen ändras till submit när frågorna är slut
-      nextQuestionBtn.textContent =
+      nextQuestionBtn.innerHTML =
         questionIndex === data.length - 1
-          ? "Submit" + "🏆"
-          : "Next question" + "➡️";
+          ? "Submit" + " " + '<span class="trophy">🏆</span>'
+          : "Next question" + " " + '<span class="arrow">➡️</span>';
       rootContainer.appendChild(nextQuestionBtn);
       nextQuestionBtn.disabled = true;
 
@@ -120,8 +120,8 @@ function fetchQuestions() {
       progressContainer.style.alignItems = "center";
       progressContainer.style.width = "100%";
       progressContainer.style.height = "30px";
-      progressContainer.style.borderRadius = "10px";
-      progressBar.style.borderRadius = "10px";
+      progressContainer.style.borderRadius = "30px";
+      progressBar.style.borderRadius = "30px";
       progressContainer.style.backgroundColor = "#ddd";
       progressContainer.style.marginTop = "20px";
       progressBar.style.backgroundColor = "#66ff6b";
@@ -130,6 +130,7 @@ function fetchQuestions() {
       progressBar.style.margin = "0";
       progressBar.style.padding = "5px";
       progressBar.style.transition = "width 0.5s ease-in-out";
+      progressContainer.style.position = "relative";
 
       timerElement.style.fontSize = "24px";
       timerElement.style.margin = "10px";
